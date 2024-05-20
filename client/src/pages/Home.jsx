@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import home from "/home.jpg";
+// import home from "/home.jpg";
 const Home = () => {
   return (
     // <main className='flex w-[90%] mx-auto h-[90vh] items-center justify-center gap-[10rem]'>
