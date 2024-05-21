@@ -27,19 +27,21 @@ const Seller = () => {
   };
 
   // Function to get the token, this is just a placeholder
-  const getToken = () => {
-    // Replace this with your actual logic to get the token
-    return localStorage.getItem('authToken');
-  };
+  // const getToken = () => {
+  //   // Replace this with your actual logic to get the token
+  //   return localStorage.getItem('authToken');
+  // };
 
   const { mutateAsync, isLoading } = useMutation({
     mutationFn: (formData) => {
-      const token = getToken();
-      return axios.post('https://rent-app-be.vercel.app/api/properties/create', formData, {
-        headers: {
-          Authorization: `Bearer ${token}`, // Assuming a Bearer token, adjust as needed
-        },
-      });
+      // const token = getToken();
+      return axios.post('https://rent-app-be.vercel.app/api/properties/create', formData
+      //  {
+      //   headers: {
+      //     Authorization: `Bearer ${token}`, // Assuming a Bearer token, adjust as needed
+      //   },
+      // }
+    );
     },
     onSuccess: () => {
       // Invalidate and refetch

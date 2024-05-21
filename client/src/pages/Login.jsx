@@ -30,10 +30,10 @@ const Login = () => {
     onSuccess: (response) => {
       // Extract data from the response
       const userData = response.data.data;
-      const token = response.data.token; // Assuming token is in response.data.token
+      // const token = response.data.token; // Assuming token is in response.data.token
 
       // Store token in localStorage
-      localStorage.setItem('authToken', token);
+      // localStorage.setItem('authToken', token);
 
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ['user'] });
