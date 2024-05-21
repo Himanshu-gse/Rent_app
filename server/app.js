@@ -12,12 +12,19 @@ dotenv.config();
 
 const app = express();
 
+// Configure CORS
+app.use(cors({
+  origin: 'https://rent-app-nine.vercel.app', // Allow only your frontend domain
+  methods: ['GET', 'POST'], // Adjust methods as needed
+  credentials: true, // Include this if your requests include credentials like cookies
+}));
+
 // Middleware for parsing JSON and urlencoded data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Enable all cors requests
-app.use(cors());
+// app.use(cors());
 
 // Configure express-session
 app.use(
