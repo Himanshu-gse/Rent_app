@@ -21,9 +21,12 @@ const Login = () => {
     });
   };
 
-  const { mutateAsync, isPending } = useMutation({
-    mutationFn: (formData) =>
-      axios.post('https://rent-app-be.vercel.app/api/users/login', formData),
+  const { mutateAsync, isLoading } = useMutation({
+    mutationFn: async (formData) => {
+      return axios.post('https://rent-app-be.vercel.app/api/users/login', formData, {
+        withCredentials: true, // Ensure credentials are included
+      });
+    },
     onSuccess: (response) => {
       // Extract data from the response
       const userData = response.data.data;
@@ -34,7 +37,7 @@ const Login = () => {
 
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ['user'] });
-      toast.success('User Logged in successfully');
+      toast.success('User logged in successfully');
   
       // Redirect based on role
       if (userData.role === 'buyer') {
@@ -42,6 +45,9 @@ const Login = () => {
       } else if (userData.role === 'seller') {
         navigate('/sellerpage');
       }
+    },
+    onError: (error) => {
+      toast.error(error.response?.data?.error || 'Login failed');
     },
   });
 
@@ -51,14 +57,14 @@ const Login = () => {
       await mutateAsync(formData);
       setIsLoggedIn(true);
     } catch (error) {
-      toast.error(error.response.data.error);
+      console.error('Error logging in:', error);
     }
   };
 
   return (
     <div className='flex items-center justify-center h-[90vh]'>
       <form
-        className='bg-gray-200 w-[30rem] h-[19rem]  mt-10 rounded-md p-6'
+        className='bg-gray-200 w-[30rem] h-[19rem] mt-10 rounded-md p-6'
         onSubmit={handleSubmit}
       >
         <h2 className='text-3xl mb-4'>Log In</h2>
@@ -86,6 +92,7 @@ const Login = () => {
             name='password'
             id='password'
             className='h-[30px] bg-white rounded-sm px-14 focus:outline-none'
+            required
             value={formData.password}
             onChange={handleInputChange}
           />
@@ -94,9 +101,9 @@ const Login = () => {
         <button
           type='submit'
           className='bg-black rounded-md px-5 py-2 text-white font-semibold disabled:bg-slate-500'
-          disabled={isPending}
+          disabled={isLoading}
         >
-          LogIn
+          {isLoading ? 'Logging in...' : 'Log In'}
         </button>
       </form>
     </div>
