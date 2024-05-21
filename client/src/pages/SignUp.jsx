@@ -14,6 +14,7 @@ const SignUp = () => {
     role: 'buyer', // Initialize role state with 'buyer'
   });
 
+  axios.defaults.withCredentials = true;
   const handleInputChange = (e) => {
     setFormData({
       ...formData,

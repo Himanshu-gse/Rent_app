@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useState } from 'react';
 
 const fetchPropertyWithSellerDetails = async (id) => {
+  axios.defaults.withCredentials = true;
   const { data } = await axios.get(
     `https://rent-app-be.vercel.app/api/properties/${id}`
   );

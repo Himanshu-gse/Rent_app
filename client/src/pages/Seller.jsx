@@ -17,6 +17,7 @@ const Seller = () => {
     collegesNearby: '',
     nearby: '',
   });
+  axios.defaults.withCredentials = true;
 
   const handleInputChange = (e) => {
     setFormData({

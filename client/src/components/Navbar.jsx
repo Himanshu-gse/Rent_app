@@ -6,6 +6,7 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  axios.defaults.withCredentials = true;
   const handleLogout = async () => {
     try {
       await axios.get('https://rent-app-be.vercel.app/api/users/logout'); // Send request to logout endpoint

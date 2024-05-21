@@ -8,6 +8,7 @@ const Login = () => {
   const queryClient = useQueryClient();
   const [loggedIn, setIsLoggedIn] = useOutletContext();
   const navigate = useNavigate();
+  axios.defaults.withCredentials = true;
   const [formData, setFormData] = useState({
     email: '',
     password: '',
