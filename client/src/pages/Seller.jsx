@@ -34,7 +34,7 @@ const Seller = () => {
   const { mutateAsync, isLoading } = useMutation({
     mutationFn: (formData) => {
       const token = getToken();
-      return axios.post('http://localhost:3000/api/properties/create', formData, {
+      return axios.post('https://rent-app-be.vercel.app/api/properties/create', formData, {
         headers: {
           Authorization: `Bearer ${token}`, // Assuming a Bearer token, adjust as needed
         },

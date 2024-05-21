@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 const fetchPropertyWithSellerDetails = async (id) => {
   const { data } = await axios.get(
-    `http://localhost:3000/api/properties/${id}`
+    `https://rent-app-be.vercel.app/api/properties/${id}`
   );
   return data;
 };
@@ -19,7 +19,7 @@ const fetchFilteredProperties = async (filters) => {
 
   const params = new URLSearchParams(validFilters).toString();
   const { data } = await axios.get(
-    `http://localhost:3000/api/properties/filter?${params}`
+    `https://rent-app-be.vercel.app/api/properties/filter?${params}`
   );
   return data;
 };

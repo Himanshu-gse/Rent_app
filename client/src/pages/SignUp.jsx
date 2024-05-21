@@ -23,7 +23,7 @@ const SignUp = () => {
 
   const { mutateAsync, isLoading } = useMutation({
     mutationFn: (formData) =>
-      axios.post('http://localhost:3000/api/users/signup', formData),
+      axios.post('https://rent-app-be.vercel.app/api/users/signup', formData),
     onSuccess: () => {
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ['user'] });

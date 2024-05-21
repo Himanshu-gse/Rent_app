@@ -8,7 +8,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {
-      await axios.get('http://localhost:3000/api/users/logout'); // Send request to logout endpoint
+      await axios.get('https://rent-app-be.vercel.app/api/users/logout'); // Send request to logout endpoint
       setIsLoggedIn(false); // Set authentication status to false on successful logout
       toast.success('User Logged out successfully');
       navigate('/');

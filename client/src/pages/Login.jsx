@@ -22,7 +22,7 @@ const Login = () => {
 
   const { mutateAsync, isPending } = useMutation({
     mutationFn: (formData) =>
-      axios.post('http://localhost:3000/api/users/login', formData),
+      axios.post('https://rent-app-be.vercel.app/api/users/login', formData),
     onSuccess: (response) => {
       // Extract data from the response
       const userData = response.data.data;
